@@ -20,11 +20,16 @@ const {quotesData}=useSelector(state=>state.quotesDetailsReducer)
         dispatch(getSelectedQuotesDetails(e.target.value));
       };
 
+      const onBookmarksClick = (quote) => {
+        let availableQuotes = JSON.parse(localStorage.getItem("quotes") || "[]");
+        let newQuotes = [...availableQuotes,quote]
+        localStorage.setItem("quotes",JSON.stringify(newQuotes))
+      }
     return (
         <div>
             <NavBar/>
             <div className="mainContainer">
-                <Card quote={quotesData.content} author={quotesData.author} />
+                <Card quote={quotesData} onBookmarksClick={onBookmarksClick}/>
             
             <div className="dropDownContainer">
           <DropDown  onOptionChange={onOptionChange}/>

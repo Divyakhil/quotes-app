@@ -15,4 +15,7 @@
       font-weight: bold;
     }
   
-  
+  .bookmarkButtonWrapper{
+    text-align: end;
+    cursor: pointer;
+  }

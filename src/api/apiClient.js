@@ -13,7 +13,6 @@ const getClient = () => {
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
-      // console.log("config=", config);
       return config;
     },
     function (error) {
@@ -41,7 +40,6 @@ class ApiClient {
     if (data && typeof data === "object") {
       url = `${url}?${querystring.stringify(data)}`;
     }
-    console.log("conf=", conf);
 
     return this.client
       .get(url, conf)
@@ -67,9 +65,6 @@ class ApiClient {
       .catch((error) => Promise.reject(error));
   }
   post(url, data = {}, conf = {}) {
-    console.log(url);
-    console.log("url=", url);
-    console.log("conf=", conf);
     return this.client
       .post(url, data, conf)
       .then((response) => Promise.resolve(response))

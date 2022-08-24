@@ -8,4 +8,7 @@ export default {
   getSelectedQuotes(data) {
     return client.get(`/random?tags=${data}`);
   },
+  getQuotesList() {
+    return client.get(`/quotes?page=1`);
+  },
 };

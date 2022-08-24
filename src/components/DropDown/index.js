@@ -3,6 +3,10 @@ import "./index.css";
 
 const options = [
   {
+    value: "",
+    label: "",
+  },
+  {
     value: "technology",
     label: "Technology",
   },
