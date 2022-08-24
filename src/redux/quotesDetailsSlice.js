@@ -22,5 +22,16 @@ export const getQuotesDetails = () => {
   };
 };
 
+export const getSelectedQuotesDetails = (data) => {
+  return async (dispatch) => {
+    try {
+      const response = await quotesClient.getSelectedQuotes(data);
+      dispatch(quotesDetailsAction.getQuotesDetailsData(response.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
+
 export const quotesDetailsAction = quotesDetailsSlice.actions;
 export const quotesDetailsReducer = quotesDetailsSlice.reducer;

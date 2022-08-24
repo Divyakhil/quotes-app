@@ -5,4 +5,7 @@ export default {
   getRandomQuotes() {
     return client.get(`/random`);
   },
+  getSelectedQuotes(data) {
+    return client.get(`/random?tags=${data}`);
+  },
 };

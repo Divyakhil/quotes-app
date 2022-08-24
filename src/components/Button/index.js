@@ -1,7 +1,7 @@
 import React from 'react'
+import "./index.css"
 
-export default function index() {
-  return (
-    <div>button</div>
-  )
+export default function index(props) {
+  const { label, handleButtonClick } = props;
+  return <button onClick={handleButtonClick}>{label}</button>;
 }

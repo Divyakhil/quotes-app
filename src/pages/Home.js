@@ -1,7 +1,8 @@
 import React,{useEffect} from "react";
-import { NavBar } from "../components";
+import { NavBar, Card, Button, DropDown} from "../components";
 import { useSelector,useDispatch } from "react-redux";
-import {getQuotesDetails} from "../redux/quotesDetailsSlice"
+import {getQuotesDetails, getSelectedQuotesDetails} from "../redux/quotesDetailsSlice"
+import "./index.css"
 
 export default function Home() {
 const dispatch=useDispatch()
@@ -11,12 +12,27 @@ const {quotesData}=useSelector(state=>state.quotesDetailsReducer)
         dispatch(getQuotesDetails())
     },[dispatch])
 
-    console.log({quotesData})
+    const handleButtonClick=()=>{
+        dispatch(getQuotesDetails())
+    }
+
+    const onOptionChange = (e) => {
+        dispatch(getSelectedQuotesDetails(e.target.value));
+      };
 
     return (
         <div>
             <NavBar/>
-            Home page
+            <div className="mainContainer">
+                <Card quote={quotesData.content} author={quotesData.author} />
+            
+            <div className="dropDownContainer">
+          <DropDown  onOptionChange={onOptionChange}/>
+        </div>
+        <div className="buttonContainer">
+          <Button handleButtonClick={handleButtonClick} label={"Next Quote"} />
+        </div>
+        </div>
         </div>
     )
 }
